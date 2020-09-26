@@ -1,8 +1,10 @@
 export const CREATE_USER = 'CREATE_USER';
 export const FETCH_USERS = 'FETCH_USERS';
+export const EDIT_USER = 'EDIT_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const REQUEST_USERS = 'REQUEST_USERS';
 export const REQUEST_CREATE_USER = 'REQUEST_CREATE_USER';
+export const REQUEST_EDIT_USER = 'REQUEST_EDIT_USER';
 export const REQUEST_DELETE_USER = 'REQUEST_DELETE_USER';
 
 

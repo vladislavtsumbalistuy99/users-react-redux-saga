@@ -5,13 +5,14 @@ import {
   REQUEST_CREATE_USER,
   REQUEST_DELETE_USER,
   REQUEST_USERS,
-  DELETE_USER,
+  DELETE_USER, REQUEST_EDIT_USER, EDIT_USER
 } from "./types";
 import { useHttp } from "../hooks/http.hook";
 
 export function* sagaWatcher() {
   yield takeEvery(REQUEST_USERS, usersWorker);
   yield takeEvery(REQUEST_CREATE_USER, createUserWorker);
+  yield takeEvery(REQUEST_EDIT_USER, editUserWorker)
   yield takeEvery(REQUEST_DELETE_USER, deleteUserWorker);
 }
 
@@ -26,9 +27,18 @@ function* createUserWorker(action) {
   yield put({ type: CREATE_USER, payload });
 }
 
+function* editUserWorker(action) {
+  let payload = action.payload;
+  const data ={ name:'EDITED', surname:'edited',desc:'edited'}
+  yield call(editUser, payload, data);
+  payload = yield call(fetchUsers);
+  yield put({ type: EDIT_USER, payload });
+}
+
 function* deleteUserWorker(action) {
   let payload = action.payload;
-  payload = yield call(deleteUser, payload);
+  yield call(deleteUser, payload);
+  payload =  yield call(deleteUser, payload);
   yield put({ type: DELETE_USER, payload });
 }
 
@@ -47,6 +57,18 @@ async function createUser(data) {
     },
   });
   // return await responce.json()
+}
+
+async function editUser(id,data) {
+  const responce = await fetch(`http://77.120.241.80:8911/api/user/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  return await responce.json();
 }
 
 async function deleteUser(id) {

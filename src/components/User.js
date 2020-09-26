@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteUser } from "../redux/actions";
+import { deleteUser, editUser } from "../redux/actions";
 //import { useHttp } from "../hooks/http.hook";
 
 export const User = ({ user }) => {
@@ -27,7 +27,7 @@ export const User = ({ user }) => {
             <button
               className="btn yellow darken-4"
               style={{ marginRight: 10 }}
-              // onClick={() => toggleInfo(movie.id)}
+              onClick={() => dispatch(editUser(user.id))}
             >
               Edit
             </button>
