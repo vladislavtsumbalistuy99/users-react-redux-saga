@@ -16,7 +16,7 @@ const UsersList = ({ userList }) => {
   return (
     <div>
       {currentUsers.map((user) => (
-        <User user={user} />
+        <User user={user} key={user.id}/>
       ))}
       <Pagination
         usersPerPage={usersPerPage}

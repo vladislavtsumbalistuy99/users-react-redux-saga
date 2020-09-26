@@ -30,7 +30,6 @@ function* createUserWorker(action) {
 
 function* editUserWorker(action) {
   let payload = action.payload;
-  console.log(payload);
   yield call(editUser, payload);
   payload = yield call(fetchUsers);
   yield put({ type: EDIT_USER, payload });
