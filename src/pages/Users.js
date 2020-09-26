@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import  UsersList  from "../components/UserList";
+import UsersList from "../components/UserList";
 import { useHttp } from "../hooks/http.hook";
 import { fetchUsers } from "../redux/actions";
 
 class Users extends Component {
   constructor(props) {
     super(props);
-    this.state = {users:[]};
+    this.state = { users: [] };
   }
-  componentDidMount(){
-    this.props.fetchUsers()
+  componentDidMount() {
+    this.props.fetchUsers();
   }
   render() {
-      const users = this.state.users;
+    const users = this.state.users;
     return (
       <div>
         <UsersList />
@@ -23,7 +23,7 @@ class Users extends Component {
 }
 
 const mapDispatchToProps = {
-  fetchUsers
+  fetchUsers,
 };
 
-export default connect(null,mapDispatchToProps) (Users)
+export default connect(null, mapDispatchToProps)(Users);

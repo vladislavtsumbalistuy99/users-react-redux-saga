@@ -1,4 +1,9 @@
-import { REQUEST_CREATE_USER, REQUEST_DELETE_USER, REQUEST_EDIT_USER, REQUEST_USERS } from "./types";
+import {
+  REQUEST_CREATE_USER,
+  REQUEST_DELETE_USER,
+  REQUEST_EDIT_USER,
+  REQUEST_USERS,
+} from "./types";
 
 export function createUser(user) {
   return {
@@ -9,20 +14,20 @@ export function createUser(user) {
 
 export function fetchUsers() {
   return {
-    type: REQUEST_USERS
+    type: REQUEST_USERS,
   };
 }
 
-export function editUser(id){
+export function editUser(id, data) {
   return {
     type: REQUEST_EDIT_USER,
-    payload: id
-  }
+    payload: { id, data },
+  };
 }
 
 export function deleteUser(id) {
-    return {
-        type: REQUEST_DELETE_USER,
-        payload: id
-    }
+  return {
+    type: REQUEST_DELETE_USER,
+    payload: id,
+  };
 }

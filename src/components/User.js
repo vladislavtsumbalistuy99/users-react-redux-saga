@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteUser, editUser } from "../redux/actions";
+import EditUserForm from "./EditUserForm";
+import NewUserForm from "./NewUserForm";
 //import { useHttp } from "../hooks/http.hook";
 
 export const User = ({ user }) => {
@@ -12,7 +14,16 @@ export const User = ({ user }) => {
   //     } catch (e) {}
   //   };
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [showInfo, setShowInfo] = useState({});
+  const data = { name: "EDITED", surname: "edited", desc: "edited" };
+
+  const toggleInfo = (id) => {
+    setShowInfo((prevShowInfo) => ({
+      ...prevShowInfo,
+      [id]: !prevShowInfo[id],
+    }));
+  };
 
   return (
     <div className="row">
@@ -27,7 +38,8 @@ export const User = ({ user }) => {
             <button
               className="btn yellow darken-4"
               style={{ marginRight: 10 }}
-              onClick={() => dispatch(editUser(user.id))}
+              onClick={() => toggleInfo(user.id)}
+              //onClick={() => dispatch(editUser(user.id,data))}
             >
               Edit
             </button>
@@ -38,6 +50,7 @@ export const User = ({ user }) => {
               Delete
             </button>
           </div>
+          {showInfo[user.id] ? <EditUserForm userId={user.id} /> : null}
         </div>
       </div>
     </div>

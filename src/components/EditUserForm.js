@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createUser, editUser } from "../redux/actions";
 
-class NewUserForm extends Component {
+class EditUserForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,11 +49,9 @@ class NewUserForm extends Component {
     return (
       <div className="row">
         <div className="col s8 offset-s2">
-          <p>{this.props.editUser}</p>
-          <h1>Add new user</h1>
           <div className="card blue darken-1">
             <div className="card-content white-text">
-              <span className="card-title">Enter data</span>
+              <span className="card-title">Enter new data</span>
 
               <div>
                 <div className="input-field">
@@ -97,9 +95,10 @@ class NewUserForm extends Component {
               <button
                 className="btn yellow darken-4"
                 style={{ marginRight: 10 }}
-                onClick={this.newUserHandler}
+                onClick={() => this.editUserHandler(this.props.userId)}
+                //onClick={this.newUserHandler}
               >
-                Add user
+                Edit user
               </button>
             </div>
           </div>
@@ -114,4 +113,4 @@ const mapDispatchToProps = {
   editUser,
 };
 
-export default connect(null, mapDispatchToProps)(NewUserForm);
+export default connect(null, mapDispatchToProps)(EditUserForm);

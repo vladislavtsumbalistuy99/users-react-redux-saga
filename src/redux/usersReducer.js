@@ -13,7 +13,7 @@ export const usersReducer = (state = initialState, action) => {
     case EDIT_USER:
       return { ...state, users: action.payload };
     case DELETE_USER:
-      return { users: action.payload };
+      return { state, users: action.payload };
     default:
       return state;
   }

@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import NewUserForm  from '../components/NewUserForm';
+import React, { Component } from "react";
+import NewUserForm from "../components/NewUserForm";
 
 class NewUsers extends Component {
-    constructor(props){
-        super(props)
-        this.state = {}
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     return (
       <div className="container">
-       <NewUserForm />
+        <NewUserForm />
       </div>
     );
   }
 }
 
-export default NewUsers; 
+export default NewUsers;
