@@ -1,9 +1,7 @@
 import React from 'react'
-import {NavLink, useHistory} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 export const Navbar = () => {
-  const history = useHistory()
-
   return (
     <nav>
       <div className="nav-wrapper blue darken-1" style={{ padding: '0 2rem' }}>

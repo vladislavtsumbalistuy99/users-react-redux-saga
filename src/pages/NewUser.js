@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import NewUserForm  from '../components/NewUserForm';
 
 class NewUsers extends Component {
+    constructor(props){
+        super(props)
+        this.state = {}
+    }
   render() {
     return (
-      <div>
-       New Users
+      <div className="container">
+       <NewUserForm />
       </div>
     );
   }
