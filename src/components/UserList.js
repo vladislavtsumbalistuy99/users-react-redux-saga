@@ -1,22 +1,36 @@
-import React from "react";
-import {connect} from "react-redux"
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import { User } from "./User";
+import { Pagination } from "../components/Pagination";
 
- const UsersList = ({ userList }) => {
-  // if (!userList) {
-  //   return (
-  //       <p style={{textAlign:'center', fontSize:48}}>No users</p>
-  //   );
-  // }
+const UsersList = ({ userList }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage, setusersPerPage] = useState(4);
+  const indexOfLastMovie = currentPage * usersPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - usersPerPage;
+  const currentUsers = userList.slice(indexOfFirstMovie, indexOfLastMovie);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  if (!currentUsers) {
+    return <p style={{ textAlign: "center", fontSize: 48 }}>No users</p>;
+  }
   return (
-    userList.map((user) => <User user={user} />)
-      );
+    <div>
+      {currentUsers.map((user) => (
+        <User user={user} />
+      ))}
+      <Pagination
+        usersPerPage={usersPerPage}
+        totalusers={userList.length}
+        paginate={paginate}
+      />
+    </div>
+  );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    userList:state.users.users
-  }
-}
+    userList: state.users.users,
+  };
+};
 
-export default connect(mapStateToProps,null) (UsersList)
+export default connect(mapStateToProps, null)(UsersList);
