@@ -6,34 +6,15 @@ class EditUserForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      name: "1",
       surname: "",
       desc: "",
     };
   }
-  newUserHandler = (e) => {
-    e.preventDefault();
-    // const self = this;
-    // fetch("http://77.120.241.80:8911/api/users", {
-    //   method: "POST",
-    //   body: JSON.stringify(this.state),
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    // }).then((response) => {
-    //   response.json().then(() => {
-    //     self.setState({
-    //       name: "",
-    //       surname: "",
-    //       desc: "",
-    //     });
-    //   });
-    // }).then(() =>{
-    //   self.props.createUser(this.state)
-    // })
-    this.props.createUser(this.state);
-  };
+
+  componentDidMount(){
+    this.setState(this.props.user)
+  }
 
   editUserHandler = (id) => {
     this.props.editUser(id, this.state);
@@ -100,7 +81,7 @@ class EditUserForm extends Component {
               <button
                 className="btn yellow darken-4"
                 style={{ marginRight: 10 }}
-                onClick={() => this.editUserHandler(this.props.userId)}
+                onClick={() => this.editUserHandler(this.props.user.id)}
                 //onClick={this.newUserHandler}
               >
                 Edit user

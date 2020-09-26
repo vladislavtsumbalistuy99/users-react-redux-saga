@@ -16,13 +16,13 @@ export const User = ({ user }) => {
 
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState({});
-  const data = { name: "EDITED", surname: "edited", desc: "edited" };
 
   const toggleInfo = (id) => {
     setShowInfo((prevShowInfo) => ({
       ...prevShowInfo,
       [id]: !prevShowInfo[id],
     }));
+
   };
 
   return (
@@ -50,7 +50,7 @@ export const User = ({ user }) => {
               Delete
             </button>
           </div>
-          {showInfo[user.id] ? <EditUserForm userId={user.id} /> : null}
+          {showInfo[user.id] ? <EditUserForm user={user} /> : null}
         </div>
       </div>
     </div>
