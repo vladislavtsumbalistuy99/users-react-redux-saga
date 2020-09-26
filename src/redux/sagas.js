@@ -23,23 +23,38 @@ function* usersWorker() {
 }
 
 function* createUserWorker(action) {
-  const payload = action.payload;
-  yield call(createUser, payload);
-  yield put({ type: CREATE_USER, payload });
+  try {
+    const payload = action.payload;
+    yield call(createUser, payload);
+    yield put({ type: CREATE_USER, payload });
+  } catch (e) {
+    console.log(e.message);
+    throw e;
+  }
 }
 
 function* editUserWorker(action) {
-  let payload = action.payload;
-  yield call(editUser, payload);
-  payload = yield call(fetchUsers);
-  yield put({ type: EDIT_USER, payload });
+  try {
+    let payload = action.payload;
+    yield call(editUser, payload);
+    payload = yield call(fetchUsers);
+    yield put({ type: EDIT_USER, payload });
+  } catch (e) {
+    console.log(e.message);
+    throw e;
+  }
 }
 
 function* deleteUserWorker(action) {
-  let payload = action.payload;
-  yield call(deleteUser, payload);
-  payload = yield call(fetchUsers);
-  yield put({ type: DELETE_USER, payload });
+  try {
+    let payload = action.payload;
+    yield call(deleteUser, payload);
+    payload = yield call(fetchUsers);
+    yield put({ type: DELETE_USER, payload });
+  } catch (e) {
+    console.log(e.message);
+    throw e;
+  }
 }
 
 async function fetchUsers() {

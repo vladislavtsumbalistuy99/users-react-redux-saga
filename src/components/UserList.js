@@ -5,7 +5,7 @@ import { Pagination } from "../components/Pagination";
 
 const UsersList = ({ userList }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage, setusersPerPage] = useState(4);
+  const [usersPerPage, setusersPerPage] = useState(5);
   const indexOfLastMovie = currentPage * usersPerPage;
   const indexOfFirstMovie = indexOfLastMovie - usersPerPage;
   const currentUsers = userList.slice(indexOfFirstMovie, indexOfLastMovie);
