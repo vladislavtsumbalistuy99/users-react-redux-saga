@@ -37,6 +37,11 @@ class EditUserForm extends Component {
 
   editUserHandler = (id) => {
     this.props.editUser(id, this.state);
+    this.setState({
+      name: "",
+      surname: "",
+      desc: "",
+    })
   };
   changeInputHandler = (e) => {
     e.persist();

@@ -33,6 +33,11 @@ class NewUserForm extends Component {
     //   self.props.createUser(this.state)
     // })
     this.props.createUser(this.state);
+    this.setState({
+      name: "",
+      surname: "",
+      desc: "",
+    })
   };
 
   editUserHandler = (id) => {
